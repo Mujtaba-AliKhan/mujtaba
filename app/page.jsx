@@ -1,65 +1,28 @@
-// // import Hero from "@/components/Hero";
-// // import Projects from "@/components/Projects";
-
-// // export default function Home() {
-// //   return (
-// //     <main>
-// //       <Hero />
-// //       <Projects />
-// //     </main>
-// //   );
-// // }
-
-// "use client";
-// import { useEffect, useState } from "react";
-// import { useRouter } from "next/navigation";
-// import Hero from "@/components/Hero";
-// import Projects from "@/components/Projects";
-
-// export default function Home() {
-//   const [ready, setReady] = useState(false);
-//   const router = useRouter();
-
-//   useEffect(() => {
-//     const alreadyLoaded = sessionStorage.getItem("hasLoaded");
-
-//     if (!alreadyLoaded) {
-//       router.replace("/intro");
-//     } else {
-//       setReady(true);
-//     }
-//   }, [router]);
-
-//   if (!ready) return null;
-
-//   return (
-//     <main>
-//       <Hero />
-//       <Projects />
-//     </main>
-//   );
-// }
-
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Hero from "@/components/Hero";
-import Projects from "@/components/Projects";
+import Loader from "@/components/Loader";
 
-export default function Home() {
+export default function IntroPage() {
   const router = useRouter();
+  const [shouldShowLoader, setShouldShowLoader] = useState(false);
 
   useEffect(() => {
-    const seenIntro = sessionStorage.getItem("hasSeenIntro");
-    if (!seenIntro) {
-      router.replace("/intro");
+    const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
+
+    if (hasSeenIntro) {
+      router.replace("/home");
+    } else {
+      setShouldShowLoader(true);
     }
   }, [router]);
 
-  return (
-    <main>
-      <Hero />
-      <Projects />
-    </main>
-  );
+  const handleFinish = () => {
+    sessionStorage.setItem("hasSeenIntro", "true");
+    router.replace("/home");
+  };
+
+  if (!shouldShowLoader) return null;
+
+  return <Loader onFinish={handleFinish} />;
 }
