@@ -30,20 +30,14 @@
 .home-about-img {
   object-fit: cover;
   border-radius: 20px;
-  transition: all 0.8s ease;
+  transition: all 1.5s ease;
 }
 .home-about-img:hover {
-  transform: scale(1.1);
-}
-.home-about-text {
-  flex: 1 1 400px;
+  transform: scale(1.4);
 }
 
-.home-about-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-color);
-  margin-bottom: 1rem;
+.home-about-text {
+  flex: 1 1 400px;
 }
 
 .home-about-description {

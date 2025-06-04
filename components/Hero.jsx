@@ -69,19 +69,35 @@ const Hero = () => {
         </p>
 
         {/* CTA Button */}
-        <motion.div
-          className="hero-cta-container"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 4.5, duration: 0.5 }}
-        >
-          <a href="#projects" className="hero-cta">
+        <div className="hero-cta-container">
+          <motion.a
+            className="hero-cta"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 4, duration: 0.5 }}
+            viewport={{ once: true }}
+            onClick={() => {
+              const el = document.getElementById("projects");
+              if (el) {
+                window.scrollTo({
+                  top: el.offsetTop,
+                  behavior: "smooth",
+                });
+              }
+            }}
+          >
             Explore Projects
-          </a>
-          <a href="#contact" className="hero-cta">
+          </motion.a>
+          <motion.a
+            href="/lets-connect"
+            className="hero-cta"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 4, duration: 0.5 }}
+          >
             Connect with Me
-          </a>
-        </motion.div>
+          </motion.a>
+        </div>
       </div>
     </motion.section>
   );

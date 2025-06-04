@@ -24,8 +24,9 @@ const SplitText = ({
 
   useEffect(() => {
     const el = ref.current;
+    if (!el || el.dataset.animated === "true") return; // prevent repeat
+
     el.style.visibility = "hidden";
-    if (!el) return;
 
     const absoluteLines = splitType === "lines";
     if (absoluteLines) el.style.position = "relative";
@@ -57,23 +58,12 @@ const SplitText = ({
       t.style.willChange = "transform, opacity";
     });
 
-    const startPct = (1 - threshold) * 100; // e.g. 0.1 -> 90%
+    const startPct = (1 - threshold) * 100;
     const m = /^(-?\d+)px$/.exec(rootMargin);
     const raw = m ? parseInt(m[1], 10) : 0;
     const sign = raw < 0 ? `-=${Math.abs(raw)}px` : `+=${raw}px`;
     const start = `top ${startPct}%${sign}`;
 
-    // 5) Timeline with smoothChildTiming
-    // const tl = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: el,
-    //     start,
-    //     toggleActions: "play none none none",
-    //     once: true,
-    //   },
-    //   smoothChildTiming: true,
-    //   onComplete: onLetterAnimationComplete,
-    // });
     const tl = gsap.timeline({
       delay: timelineDelay || 0,
       scrollTrigger: {
@@ -81,19 +71,17 @@ const SplitText = ({
         start,
         toggleActions: "play none none none",
         once: true,
+        onEnter: () => {
+          if (el.dataset.animated === "true") return;
+          el.dataset.animated = "true";
+          tl.play();
+        },
       },
+      paused: true,
       smoothChildTiming: true,
       onComplete: onLetterAnimationComplete,
     });
 
-    // tl.set(targets, { ...from, immediateRender: false, force3D: true });
-    // tl.to(targets, {
-    //   ...to,
-    //   duration,
-    //   ease,
-    //   stagger: delay / 1000,
-    //   force3D: true,
-    // });
     tl.set(targets, { ...from, immediateRender: false, force3D: true });
     tl.to(targets, {
       ...to,
@@ -107,27 +95,16 @@ const SplitText = ({
     });
 
     return () => {
-      tl.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      gsap.killTweensOf(targets);
-      splitter.revert();
+      // Do NOT revert or kill if we want to preserve animation state
+      // tl.kill(); // removed to keep state
+      // splitter.revert(); // removed to prevent DOM reset
     };
-  }, [
-    text,
-    delay,
-    duration,
-    ease,
-    splitType,
-    from,
-    to,
-    threshold,
-    rootMargin,
-    onLetterAnimationComplete,
-  ]);
+  }, []);
 
   return (
     <span
       ref={ref}
+      data-animated="false"
       className={`split-parent ${className}`}
       style={{
         textAlign,

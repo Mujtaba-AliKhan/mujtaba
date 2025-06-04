@@ -74,6 +74,7 @@
   box-shadow: 0 0 10px rgba(15, 158, 178, 0.5);
   margin-bottom: 3rem;
   border: 1px solid var(--accent-color);
+  cursor: pointer;
 }
 
 .hero-cta:hover {

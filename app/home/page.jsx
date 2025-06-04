@@ -22,14 +22,14 @@ export default function HomePage() {
   useSectionScroll();
 
   return (
-    <main>
+    <main className="home-container">
       <section className="section-page">
         <Hero />
       </section>
       <section className="section-page">
         <AboutMe />
       </section>
-      <section className="section-page">
+      <section className="section-page" id="projects">
         <Projects />
       </section>
     </main>

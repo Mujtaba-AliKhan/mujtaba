@@ -8,18 +8,13 @@
 
 .title-symbol {
   color: #0f9eb2;
-  /* font-size: 3rem; */
   margin: 0;
   display: flex;
   align-items: center;
 }
 
-/* .title-symbol {
-  font-size: 3rem;
-} */
-
 .title-text {
-  color: #dde6ed;
+  color: var(--text-color);
   font-size: 1.8rem;
   margin: 0;
 }

@@ -7,6 +7,7 @@ const assetsToLoad = [
   "/assets/hero/hero-bg.mp4",
   "/assets/logo/mujtaba-logo-dark.png",
   "/assets/logo/mujtaba-logo.png",
+  "/assets/about/mujtaba-dp.jpg",
 ];
 
 const fetchWithProgress = (url, onProgress) =>

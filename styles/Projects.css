@@ -1,12 +1,33 @@
 .projects-container {
-  width: 100%;
-  min-height: 100vh;
-  padding-top: 10rem;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100vh;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  background: var(--bg-gradient-reverse);
   color: var(--text-color);
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  background-color: var(--bg-color);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.projects-container::-webkit-scrollbar {
+  display: none;
+}
+
+.project-slide {
+  min-width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  padding: 3rem;
+  scroll-snap-align: start;
+  background: var(--bg-gradient-reverse);
+  /* background-color: #041a3a; */
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
