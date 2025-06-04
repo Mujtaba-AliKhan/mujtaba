@@ -8,7 +8,9 @@ const ClientLayout = ({ children }) => {
     <div className="client-layout">
       <Navbar />
       {children}
-      <Footer />
+      <div id="footer">
+        <Footer />
+      </div>
     </div>
   );
 };

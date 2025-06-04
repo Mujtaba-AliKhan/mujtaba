@@ -3,21 +3,14 @@ import useHorizontalScroll from "./hooks/useHorizontalScroll";
 import "../styles/Projects.css";
 
 const Projects = () => {
-  // Tell outer scroll system to go up/down when needed
   useHorizontalScroll({
     onReachStart: () => {
-      // simulate scroll to About Me section
-      const el = document.querySelector("#about");
-      if (el) {
-        window.scrollTo({ top: el.offsetTop, behavior: "smooth" });
-      }
+      const el = document.querySelector("#about-me");
+      if (el) window.scrollTo({ top: el.offsetTop, behavior: "smooth" });
     },
     onReachEnd: () => {
-      // simulate scroll to Footer or next section
-      const el = document.querySelector("#footer"); // or #contact
-      if (el) {
-        window.scrollTo({ top: el.offsetTop, behavior: "smooth" });
-      }
+      const el = document.querySelector("#footer");
+      if (el) window.scrollTo({ top: el.offsetTop, behavior: "smooth" });
     },
   });
 

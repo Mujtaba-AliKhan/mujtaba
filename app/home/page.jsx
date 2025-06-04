@@ -26,7 +26,7 @@ export default function HomePage() {
       <section className="section-page">
         <Hero />
       </section>
-      <section className="section-page">
+      <section className="section-page" id="about-me">
         <AboutMe />
       </section>
       <section className="section-page" id="projects">
