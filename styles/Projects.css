@@ -1,12 +1,9 @@
 .projects-container {
   width: 100%;
   min-height: 100vh;
-  padding: 0 2rem;
-  /* padding-top: 80px; */
   padding-top: 10rem;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   color: var(--text-color);
   text-align: center;
   position: relative;
