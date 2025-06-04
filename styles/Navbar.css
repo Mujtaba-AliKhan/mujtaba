@@ -1,0 +1,232 @@
+.navbar-container {
+  width: 100%;
+  max-width: 50vw;
+  margin: 10px auto;
+  background-color: #7e7e7e94;
+  border-radius: 40px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  transition: background-color 0.3s ease;
+}
+
+.navbar-inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 48px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo img:hover {
+  transform: scale(1.1);
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navbar-menu-item {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.navbar-menu-item:hover {
+  color: var(--accent-color);
+}
+
+.navbar-menu-item::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--accent-color);
+  transition: width 0.6s ease;
+}
+
+.navbar-menu-item:hover::after {
+  width: 100%;
+}
+
+.navbar-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Dark/Light Toggle */
+.navbar-toggle-wrapper {
+  width: 50px;
+  height: 26px;
+  background-color: var(--bg-color);
+  background-color: var(--text-color);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggle-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: var(--dark);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  font-size: 12px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: left 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-toggle-wrapper:hover .navbar-toggle-thumb {
+  background-color: #0f9eb2;
+}
+
+.navbar-toggle-thumb.light {
+  left: 3px;
+}
+
+.navbar-toggle-thumb.dark {
+  left: 27px;
+}
+
+/* Hamburger */
+.navbar-hamburger {
+  background: none;
+  border: none;
+  display: none !important;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+  z-index: 1001;
+}
+
+.navbar-line {
+  fill: none;
+  stroke: var(--text-color);
+  stroke-width: 6;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-line1 {
+  stroke-dasharray: 60 207;
+}
+.navbar-line2 {
+  stroke-dasharray: 60 60;
+}
+.navbar-line3 {
+  stroke-dasharray: 60 207;
+}
+
+.opened .navbar-line1 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+}
+.opened .navbar-line2 {
+  stroke-dasharray: 1 60;
+  stroke-dashoffset: -30;
+}
+.opened .navbar-line3 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+}
+
+/* Mobile Menu */
+.navbar-mobile-menu {
+  position: fixed;
+  top: 100%;
+  left: 50%;
+  width: 300px;
+  background-color: #4d4d4daf;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  gap: 2rem;
+  z-index: 999;
+  box-shadow: -2px 0 8px var(--accent-color);
+}
+
+.light-mode .navbar-mobile-menu {
+  box-shadow: -2px 0 8px #041a3a;
+}
+
+.navbar-mobile-menu a {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-mobile-menu a:hover {
+  color: var(--accent-color);
+}
+
+@media (max-width: 1300px) {
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-hamburger {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar-container {
+    max-width: 70vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-container {
+    max-width: 90vw;
+  }
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-mobile-menu {
+    width: 80vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 1rem;
+  }
+
+  .navbar-logo img {
+    height: 45px;
+    max-width: 120px;
+  }
+}

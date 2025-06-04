@@ -1,0 +1,56 @@
+:root {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --accent-color: #0f9eb2;
+  --white: #ffffff;
+  --dark: #041a3a;
+}
+
+.light-mode {
+  --bg-color: #ffffff;
+  --text-color: #041a3a;
+  --accent-color: #0f9eb2;
+  --white: #041a3a;
+  --dark: #ffffff;
+}
+
+@font-face {
+  font-family: "Nairod";
+  src: url("/assets/fonts/Nairod.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: "Nairod";
+  background-color: var(--bg-color);
+}
+
+.client-layout {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.split-parent span {
+  display: inline-block;
+}
+
+.split-parent .word {
+  white-space: nowrap;
+}
